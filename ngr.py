@@ -1,5 +1,6 @@
 import pdb
 
+
 def ngr(arr):
 
     result = []
