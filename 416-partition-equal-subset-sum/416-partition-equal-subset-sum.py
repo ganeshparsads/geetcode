@@ -2,14 +2,12 @@ class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         size = len(nums)
         
-        mean = sum(nums) / 2.0
-        
-        print(mean)
-        
-        if mean > 1 and mean % int(mean) != 0 or mean < 1:
+        mean = sum(nums)
+
+        if mean % 2 != 0:
             return False
 
-        mean = int(mean)
+        mean = int(mean/2)
 
         dp = [[-1 for x in range(mean + 1)] for x in range(size + 1)]
         
