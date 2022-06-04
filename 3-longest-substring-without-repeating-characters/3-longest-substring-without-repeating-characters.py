@@ -12,7 +12,7 @@ class Solution:
             if strList[end] not in seen:
                 seen.append(strList[end])
             else:
-                maxLen = max(maxLen, len(seen))
+                maxLen = max(maxLen, end-start)
                 ele = ''
                 while seen and ele != strList[end]:
                     start += 1
