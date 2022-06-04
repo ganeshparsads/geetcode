@@ -4,23 +4,21 @@ class Solution:
         end = 0
 
         maxLen = 0
-        windowString = deque()
+        seen = deque()
         strList = list(s)
         strLen = len(s)
 
-        while end < strLen:
-            if strList[end] not in windowString:
-                windowString.append(strList[end])
-                end += 1
-
+        for end in range(strLen):
+            if strList[end] not in seen:
+                seen.append(strList[end])
             else:
-                maxLen = max(maxLen, len(windowString))
+                maxLen = max(maxLen, len(seen))
                 ele = ''
-                while windowString and ele != strList[end]:
+                while seen and ele != strList[end]:
                     start += 1
-                    ele = windowString.popleft()
+                    ele = seen.popleft()
 
-                windowString.append(strList[end])
-                end += 1
-        maxLen = max(maxLen, len(windowString))
+                seen.append(strList[end])
+
+        maxLen = max(maxLen, len(seen))
         return maxLen
