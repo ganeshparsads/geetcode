@@ -2,8 +2,7 @@ class Solution:
     def rob(self, nums: List[int]) -> int:
         dp = []
 
-        for index, i in enumerate(nums):
-            idx = index
+        for idx, i in enumerate(nums):
             if idx == 0:
                 dp.append(i)
             elif idx == 1:
