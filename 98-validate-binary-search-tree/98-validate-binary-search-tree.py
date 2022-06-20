@@ -30,6 +30,8 @@ class Solution:
         dq = collections.deque()
         dq.append(root)
         while root != null and dq:
+            
+            # inorder(push left)
             while root != null:
                 dq.append(root)
                 root = root.left
