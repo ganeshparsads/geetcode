@@ -26,3 +26,20 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         self.inorder(root)
         return self.flag
+    
+        dq = collections.deque()
+        dq.append(root)
+        while root != null and dq:
+            while root != null:
+                dq.append(root)
+                root = root.left
+            
+            root = dq.pop()
+            
+            if prev and prev.val >= root.val:
+                return False
+            prev = root
+            root = root.right
+        
+        return True
+        
