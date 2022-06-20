@@ -16,10 +16,12 @@ class Solution:
         
         if self.prev and self.prev.val >= root.val:
             self.flag = False
+            return
         
         self.prev = root
-
-        self.inorder(root.right)
+        
+        if self.flag:
+            self.inorder(root.right)
     
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         self.inorder(root)
