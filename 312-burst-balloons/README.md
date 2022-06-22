@@ -1,5 +1,6 @@
 <h2><a href="https://leetcode.com/problems/burst-balloons/">312. Burst Balloons</a></h2><h3>Hard</h3><hr><div><p>You are given <code>n</code> balloons, indexed from <code>0</code> to <code>n - 1</code>. Each balloon is painted with a number on it represented by an array <code>nums</code>. You are asked to burst all the balloons.</p>
 
+<b>Reference</b>: https://medium.com/algorithms-digest/bursting-balloons-1820664a4ffa
 <p>If you burst the <code>i<sup>th</sup></code> balloon, you will get <code>nums[i - 1] * nums[i] * nums[i + 1]</code> coins. If <code>i - 1</code> or <code>i + 1</code> goes out of bounds of the array, then treat it as if there is a balloon with a <code>1</code> painted on it.</p>
 
 <p>Return <em>the maximum coins you can collect by bursting the balloons wisely</em>.</p>
