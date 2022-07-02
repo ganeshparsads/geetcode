@@ -26,13 +26,16 @@ class Solution:
         if not root.left and not root.right:
             if currSum == targetSum:
                 # add the path to the result set
-                self.result.append(path)        
-        
+                self.result.append(list(path))
+
         # left traversal
-        self.helper(root.left, currSum, list(path), targetSum)
+        self.helper(root.left, currSum, path, targetSum)
         
         # st.pop()
         
-        if root.right:
-            self.helper(root.right, currSum, list(path), targetSum)
+        # right traversal
+        self.helper(root.right, currSum, path, targetSum)
+        
+        # backtracking
+        path.pop()
         
