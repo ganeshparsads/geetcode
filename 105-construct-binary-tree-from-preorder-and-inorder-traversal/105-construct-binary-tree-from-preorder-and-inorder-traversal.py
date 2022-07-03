@@ -21,7 +21,7 @@ class Solution:
         
         inLeft = list(inorder[0: rootIdx])
         inRight = list(inorder[rootIdx+1: len(inorder)])
-        preLeft = list(preorder[1: rootIdx+1])
+        preLeft = list(preorder[1: len(inLeft)+1])
         preRight = list(preorder[len(inLeft)+1: len(preorder)])
         
         rootNode.left = self.buildTree(preLeft, inLeft)
