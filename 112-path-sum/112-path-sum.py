@@ -18,10 +18,10 @@ class Solution:
     def helper(self, root, currSum, targetSum):
         # base case
         if not root:
-            return False
-        
-        if self.result:
             return True
+        
+        # if self.result:
+        #     return True
         
         # logic
         currSum += root.val
@@ -33,6 +33,8 @@ class Solution:
                 print("reached here")
                 self.result = True
                 return self.result
+            else:
+                return False
 
         # left traversal
         result = self.helper(root.left, currSum, targetSum)
