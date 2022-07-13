@@ -10,7 +10,7 @@ class Solution:
             mid = start + (end - start)//2
             
             i, j = self.decodeIndex(mid, len(matrix[0]))
-            print(i, j)
+
             ele = matrix[i][j]
             
             if ele == target:
