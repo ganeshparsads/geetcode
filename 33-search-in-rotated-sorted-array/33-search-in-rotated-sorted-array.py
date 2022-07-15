@@ -19,7 +19,7 @@ class Solution:
                     start = mid + 1
 
             else:
-                if nums[start] > target and target > ele:
+                if ele < target and target <= nums[end]:
                     start = mid + 1
                 else:
                     end = mid - 1
