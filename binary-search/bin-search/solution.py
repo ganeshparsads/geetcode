@@ -11,12 +11,12 @@ class Solution:
             if ele == target:
                 return mid
             elif ele < target:
-                # import pdb
-                # pdb.set_trace()
+                print("here")
                 if nums[end] == target:
                     return end
                 start = mid + 1
             else:
+                print("fhere")
                 if nums[start] == target:
                     return start
                 end = mid - 1
@@ -25,4 +25,4 @@ class Solution:
 
 obj = Solution()
 
-print(obj.search([-1,0,3,5,9,12], 9))
+print(obj.search([1,3], 3))
