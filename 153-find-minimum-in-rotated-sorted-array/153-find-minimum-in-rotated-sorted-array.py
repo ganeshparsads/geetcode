@@ -21,5 +21,9 @@ class Solution:
                 return ele
             elif nums[end] < ele:
                 start = mid + 1
+            # this will make infinite loop, since the unsorted part of the array 
+            # will have sorted array, so you need to have default case.
+            # elif nums[start] > ele:
+            #     end = mid - 1
             else:
                 end = mid - 1
