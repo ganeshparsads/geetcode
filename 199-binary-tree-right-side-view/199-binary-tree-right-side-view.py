@@ -6,26 +6,55 @@
 #         self.right = right
 from collections import deque
 class Solution:
+    def __init__(self):
+        self.traversal = []
+
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
             return []
+        
+        # BFS
+        # result = []
+
+        # queue = deque()
+        # queue.append(root)
+
+        # while queue:
+        #     size = len(queue)
+        #     level = []
+        #     for i in range(size):
+        #         curr = queue.popleft()
+        #         level.append(curr.val)
+        #         if curr.left:
+        #             queue.append(curr.left)
+        #         if curr.right:
+        #             queue.append(curr.right)
+        #     result.append(level[-1])
+
+        # return result
+        
+        # DFS
+        
+        self.dfs(root, 0)
+        
         result = []
         
-        queue = deque()
-        queue.append(root)
-        
-        while queue:
-            size = len(queue)
-            level = []
-            for i in range(size):
-                curr = queue.popleft()
-                level.append(curr.val)
-                if curr.left:
-                    queue.append(curr.left)
-                if curr.right:
-                    queue.append(curr.right)
-            result.append(level[-1])
+        for i in self.traversal:
+            result.append(i[-1])
         
         return result
-            
+        
+    def dfs(self, root, level):
+        # base
+        
+        if not root:
+            return None
+        
+        # logic
+        if len(self.traversal) == level:
+            self.traversal.append([])
+        self.traversal[level].append(root.val)
+        self.dfs(root.left, level+1)
+        self.dfs(root.right, level+1)
+
         
