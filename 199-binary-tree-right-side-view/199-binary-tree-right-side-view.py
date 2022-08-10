@@ -46,16 +46,20 @@ class Solution:
         
     def dfs(self, root, level):
         # base
-        
         if not root:
-            return None
-        
+            return None        
         # logic
+        print(root.val, level)
+        
+        # if len(self.result) > level:
+        #     return None
+        
         if len(self.result) == level:
             self.result.append(root.val)
-        else:
-            self.result[level] = root.val
-        self.dfs(root.left, level+1)
+        # else:
+        #     self.result[level] = root.val
         self.dfs(root.right, level+1)
+        self.dfs(root.left, level+1)
+
 
         
