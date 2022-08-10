@@ -7,7 +7,7 @@
 from collections import deque
 class Solution:
     def __init__(self):
-        self.traversal = []
+        self.result = []
 
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
@@ -37,12 +37,12 @@ class Solution:
         
         self.dfs(root, 0)
         
-        result = []
+        # result = []
         
-        for i in self.traversal:
-            result.append(i[-1])
+        # for i in self.traversal:
+        #     result.append(i[-1])
         
-        return result
+        return self.result
         
     def dfs(self, root, level):
         # base
@@ -51,9 +51,10 @@ class Solution:
             return None
         
         # logic
-        if len(self.traversal) == level:
-            self.traversal.append([])
-        self.traversal[level].append(root.val)
+        if len(self.result) == level:
+            self.result.append(root.val)
+        else:
+            self.result[level] = root.val
         self.dfs(root.left, level+1)
         self.dfs(root.right, level+1)
 
