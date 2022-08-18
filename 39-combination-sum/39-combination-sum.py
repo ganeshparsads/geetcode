@@ -17,9 +17,17 @@ class Solution:
             return
 
         # logic
-        # case 1: no choose
-        self.recursive(candidates, target, index+1, list(path))
+#         # case 1: no choose
+#         self.recursive(candidates, target, index+1, list(path))
+
+#         # case 2: choice
+#         path.append(candidates[index])
+#         self.recursive(candidates, target - candidates[index], index, list(path))
 
         # case 2: choice
         path.append(candidates[index])
         self.recursive(candidates, target - candidates[index], index, list(path))
+
+        # case 1: no choose
+        path.pop()
+        self.recursive(candidates, target, index+1, list(path))
