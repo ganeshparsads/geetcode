@@ -7,6 +7,21 @@ class Solution:
         self.recursive(candidates, target, 0, [])
         return self.result
     
+    def forLoopRecursion(self, candidates, target, index, path):
+        # base
+        if not target:
+            self.result.append(list(path))
+            return
+        
+        if target < 0:
+            return
+
+        # logic
+        for i in range(index, len(candidates)):
+            path.append(candidates[i])
+            self.forLoopRecursion(candidates, target-candidates[i], i, path)
+            path.pop()
+    
     def recursive(self, candidates, target, index, path):
         # base case
         if not target:
