@@ -4,7 +4,7 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         if not candidates:
             return self.result
-        self.recursive(candidates, target, 0, [])
+        self.forLoopRecursion(candidates, target, 0, [])
         return self.result
     
     def forLoopRecursion(self, candidates, target, index, path):
