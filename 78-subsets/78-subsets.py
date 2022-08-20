@@ -5,7 +5,7 @@ class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         if not nums:
             return self.result
-        
+
         self.helper(nums, 0, [])
         self.result.append([])
         return self.result
