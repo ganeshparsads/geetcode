@@ -1,52 +1,40 @@
-class Trie:
-    
-    class TrieNode:
-        def __init__(self):
-            self.word = False
-            self.children = {}
-
+class TrieNode:
     def __init__(self):
-        self.node = self.TrieNode()
+        self.char = [None for i in range(26)]
+        self.wordEnd = False
 
-    def insert(self, word: str) -> None:
-        node = self.node
-        for i in range(len(word)):
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
 
+    def insert(self, word):
+        curr = self.root
+        for i in word:
+            if not curr.char[ord(i) - 97]:
+                curr.char[ord(i) - 97] = TrieNode()
+            curr = curr.char[ord(i) - 97]
+        curr.wordEnd = True
+        print(word, self.root.char)
 
-
-            if word[i] in node.children:
-                node = node.children[word[i]]
-            else:
-                node.children[word[i]] = self.TrieNode()
-
-                node = node.children[word[i]]
-
-        if node.word==False:
-            node.word = True
-
-    def search(self, word: str) -> bool:
-        node = self.node
-        for i in range(len(word)):
-            if word[i] in node.children:
-                node = node.children[word[i]]
-            else:
+    def search(self, word):
+        curr = self.root
+        for i in word:
+            if not curr.char[ord(i) - 97]:
                 return False
-        if node.word==True:
-            return True
-        return False
+            curr = curr.char[ord(i) - 97]
+        print(word, curr.wordEnd)
+        return curr.wordEnd
 
-    def startsWith(self, prefix: str) -> bool:
-
-        node = self.node
-        for i in range(len(prefix)):
-            if prefix[i] in node.children:
-                node = node.children[prefix[i]]
-            else:
+    def startsWith(self, prefix):
+        curr = self.root
+        # import pdb
+        # pdb.set_trace()
+        for i in prefix:
+            if not curr.char[ord(i) - 97]:
                 return False
-
-        return True
-
+            curr = curr.char[ord(i) - 97]
         
+        return True
 
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()
