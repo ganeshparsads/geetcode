@@ -1,39 +1,43 @@
 class TrieNode:
     def __init__(self):
-        self.char = [None for i in range(26)]
+        self.char = ["" for i in range(26)]
         self.wordEnd = False
+
 
 class Trie:
     def __init__(self):
         self.root = TrieNode()
 
+
     def insert(self, word):
         curr = self.root
+
         for i in word:
             if not curr.char[ord(i) - 97]:
                 curr.char[ord(i) - 97] = TrieNode()
             curr = curr.char[ord(i) - 97]
+
         curr.wordEnd = True
-        print(word, self.root.char)
 
     def search(self, word):
         curr = self.root
+
         for i in word:
             if not curr.char[ord(i) - 97]:
                 return False
             curr = curr.char[ord(i) - 97]
-        print(word, curr.wordEnd)
+
         return curr.wordEnd
 
-    def startsWith(self, prefix):
+
+    def startsWith(self, word):
         curr = self.root
-        # import pdb
-        # pdb.set_trace()
-        for i in prefix:
+
+        for i in word:
             if not curr.char[ord(i) - 97]:
                 return False
             curr = curr.char[ord(i) - 97]
-        
+
         return True
 
 # Your Trie object will be instantiated and called as such:
