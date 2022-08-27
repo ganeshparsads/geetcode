@@ -67,8 +67,6 @@ class Trie:
         for compl in group:
             result[compl] = word
 
-        print(result)
-
         return result
 
 class Solution:
@@ -77,6 +75,8 @@ class Solution:
         pass
 
     def replaceWords(self, dictionary, sentence):
+        # solved through BFS
+        
         obj = Trie()
 
         for word in sentence.split(' '):
@@ -87,11 +87,13 @@ class Solution:
         for word in dictionary:
             group = obj.startsWith(word)
             for key, val in group.items():
+                # if the key is not present 
                 if key not in result:
                     result[key] = val
+                # if the key is present then check length of the previous prefix
+                # you can avoid this by sorting the dictionary words by length
                 elif len(val) < len(result[key]):
                     result[key] = val
-                    
 
         final_sentence = []
         for word in sentence.split(' '):
