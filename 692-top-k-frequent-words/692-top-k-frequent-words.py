@@ -77,6 +77,9 @@ class Solution:
 		while pq:
 			# heappop() pops the least priority object in heap first.
 			answer.append(heapq.heappop(pq).word)
+
+		print(answer)
 		
 		# 5. Return the answer list in reverse order.
 		return answer[::-1]
+
