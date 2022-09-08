@@ -14,7 +14,7 @@ class Solution(object):
                 else:
                     left = mid + 1
             return left
-        
+
         first = search(target)
         last = search(target + 1) - 1
         if target in nums[first: first+1]:
