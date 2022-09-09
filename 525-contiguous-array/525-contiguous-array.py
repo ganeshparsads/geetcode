@@ -1,9 +1,10 @@
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
         prefix_sum = [0 for i in range(len(nums))]
-        
+
         result = -1
         
+        # prefix sum by making 0 to -1
         for idx, i in enumerate(nums):
             if idx == 0:
                 if i == 0:
@@ -19,10 +20,9 @@ class Solution:
             if prefix_sum[idx] == 0:
                 result = idx + 1
         
-        print(prefix_sum)
-        
         hMap = {}
         
+        # calculate
         for idx, i in enumerate(prefix_sum):
             if i not in hMap:
                 hMap[i] = (idx+1, idx+1)
