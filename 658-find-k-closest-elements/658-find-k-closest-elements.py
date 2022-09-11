@@ -10,8 +10,6 @@ class Solution:
         
         while start <= end:
             if (end - start)+1 == k:
-                print(start)
-                print(end)
                 return arr[start:end+1]
             if diff[start] > diff[end]:
                 start += 1
