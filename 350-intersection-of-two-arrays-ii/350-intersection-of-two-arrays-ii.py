@@ -11,6 +11,8 @@ class Solution:
         
         result = []
         for i in parse:
+            if not count:
+                break
             if i in count:
                 result.append(i)
                 count[i] -= 1
