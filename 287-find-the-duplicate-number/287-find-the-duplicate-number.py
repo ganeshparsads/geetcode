@@ -43,6 +43,7 @@ class Solution:
                 if i & mask:
                     count -= 1
             
+            print(count)
             if count > 0:
                 ans = ans | mask
         
