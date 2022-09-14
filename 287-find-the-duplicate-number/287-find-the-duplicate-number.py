@@ -38,9 +38,9 @@ class Solution:
             mask = 1 << j
             count = 0
             for i in range(n+1):
-                if nums[i] & mask > 0:
+                if nums[i] & mask:
                     count += 1
-                if i & mask > 0:
+                if i & mask:
                     count -= 1
             
             if count > 0:
