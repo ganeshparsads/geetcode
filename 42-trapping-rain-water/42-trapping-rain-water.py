@@ -1,19 +1,22 @@
 class Solution:
-    def getMax(self, height):
-        maxLIndices = []
+    def leftNearestEle(self, heights: List[int]) -> List[int]:
+        nearestLargest = []
+
         maxL = 0
-        for val in height:
+        
+        for val in heights:
             maxL = max(maxL, val)
-            maxLIndices.append(maxL)
-        return maxLIndices    
+            nearestLargest.append(maxL)
+        
+        return nearestLargest
     
     def trap(self, height: List[int]) -> int:
-        maxLIndices = self.getMax(height)
-        maxRIndices = list(reversed(self.getMax(reversed(height))))
-
+        leftLargest = self.leftNearestEle(height)
+        rightLargest = list(reversed(self.leftNearestEle(reversed(height))))
+        
+        
         total = 0
-
-        for idx, val in enumerate(height):
-            total += min(maxRIndices[idx], maxLIndices[idx]) - val
-
+        for idx, i in enumerate(height):
+            total += min(leftLargest[idx], rightLargest[idx])  - i
+        
         return total
