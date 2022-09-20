@@ -10,9 +10,20 @@ class Solution:
         self.count = 0
     
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        self.inorder(root, k)
+        # self.inorder(root, k)
+        # return self.result
+        stack = []
         
-        return self.result
+        while True:
+            while root:
+                stack.append(root)
+                root = root.left
+
+            root = stack.pop()
+            k -= 1
+            if not k:
+                return root.val
+            root = root.right
     
     def inorder(self, root, k):
         # base
