@@ -13,15 +13,33 @@ class Solution:
         self.qPath = []
 
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        self.helper(root, p, q, [root])
-        for i in range(min(len(self.pPath), len(self.qPath))):
-            if self.pPath[i].val != self.qPath[i].val:
-                return self.pPath[i-1]
+        # base
+        if not root or root == p or root == q:
+            return root
         
-        if len(self.pPath) < len(self.qPath):
-            return self.pPath[len(self.pPath) - 1]
+        # logic
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+        
+        if not left and not right:
+            return None
+        elif left and not right:
+            return left
+        elif right and not left:
+            return right
+        else:
+            return root
 
-        return self.qPath[len(self.qPath) - 1]
+        # dfs
+#         self.helper(root, p, q, [root])
+#         for i in range(min(len(self.pPath), len(self.qPath))):
+#             if self.pPath[i].val != self.qPath[i].val:
+#                 return self.pPath[i-1]
+        
+#         if len(self.pPath) < len(self.qPath):
+#             return self.pPath[len(self.pPath) - 1]
+
+#         return self.qPath[len(self.qPath) - 1]
         
     
     def helper(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode', path):
