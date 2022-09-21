@@ -5,15 +5,31 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    # morris implementation
+    
+    # stack implementation
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        stack = []
+        result = []
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+            
+            root = stack.pop()
+            result.append(root.val)
+            root = root.right
+        
+        return result
+    # morris implementation
+    def inorderTraversal1(self, root: Optional[TreeNode]) -> List[int]:
         result = []
         
         curr = root
         
         while curr != None:
+            # print(curr.val)
             if curr.left == None:
-                print(curr.val)
+                # print(curr.val)
                 result.append(curr.val)
                 curr = curr.right
             else:
@@ -28,8 +44,9 @@ class Solution:
                     # move forward or move down
                     curr = curr.left
                 else:
-                    print(curr.val)
+                    # print(curr.val)
                     result.append(curr.val)
+                    print(pre.val, curr.val, curr.right, result)
                     pre.right = None
                     curr = curr.right
         
