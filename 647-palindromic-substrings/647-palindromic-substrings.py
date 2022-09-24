@@ -1,12 +1,21 @@
 class Solution:
     def countSubstrings(self, S):
-        N = len(S)
-        ans = 0
-        for center in xrange(2*N - 1):
-            left = center / 2
-            right = left + center % 2
-            while left >= 0 and right < N and S[left] == S[right]:
-                ans += 1
+        res = 0
+        n = len(S)
+        for i in range(n):
+            left = i
+            right = i
+            while left >= 0 and right < n and S[left] == S[right]:
+                res += 1
                 left -= 1
                 right += 1
-        return ans
+
+        for i in range(n):
+            left = i
+            right = i+1
+            while left >= 0 and right < n and S[left] == S[right]:
+                res += 1
+                left -= 1
+                right += 1
+        
+        return res
