@@ -14,13 +14,11 @@ class Solution(object):
     def dfs(self, root, level):
         # base case
         if not root:
-            print(self.result)
             self.result = max(self.result, level-1)
             return
         # logic
         self.dfs(root.left, level+1)
         self.dfs(root.right, level+1)
-        return
 
     def maxDepth(self, root):
         """
