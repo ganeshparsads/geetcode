@@ -8,6 +8,20 @@
 from collections import deque
 
 class Solution(object):
+    def __init__(self):
+        self.result = -1
+    
+    def dfs(self, root, level):
+        # base case
+        if not root:
+            print(self.result)
+            self.result = max(self.result, level-1)
+            return
+        # logic
+        self.dfs(root.left, level+1)
+        self.dfs(root.right, level+1)
+        return
+
     def maxDepth(self, root):
         """
         :type root: TreeNode
@@ -16,22 +30,28 @@ class Solution(object):
         if not root:
             return 0
         
-        bfsStack = deque()
-        
-        bfsStack.append(root)
-        count = 0
-        while bfsStack:
-            count += 1
-            size = len(bfsStack)
-            
-            for i in range(size):
-                curr = bfsStack.popleft()
-                
-                if curr.left:
-                    bfsStack.append(curr.left)
-                if curr.right:
-                    bfsStack.append(curr.right)
+        self.dfs(root, 1)
+        return self.result
 
-        return count
+#         if not root:
+#             return 0
+        
+#         bfsStack = deque()
+        
+#         bfsStack.append(root)
+#         count = 0
+#         while bfsStack:
+#             count += 1
+#             size = len(bfsStack)
+            
+#             for i in range(size):
+#                 curr = bfsStack.popleft()
+                
+#                 if curr.left:
+#                     bfsStack.append(curr.left)
+#                 if curr.right:
+#                     bfsStack.append(curr.right)
+
+#         return count
         
         
