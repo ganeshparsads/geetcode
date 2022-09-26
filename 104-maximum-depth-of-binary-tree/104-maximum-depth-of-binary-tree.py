@@ -14,11 +14,9 @@ class Solution(object):
     def dfs(self, root, level):
         # base case
         if not root:
-            self.result = max(self.result, level-1)
-            return
+            return level - 1
         # logic
-        self.dfs(root.left, level+1)
-        self.dfs(root.right, level+1)
+        return max(self.dfs(root.left, level+1), self.dfs(root.right, level+1))
 
     def maxDepth(self, root):
         """
@@ -28,8 +26,8 @@ class Solution(object):
         if not root:
             return 0
         
-        self.dfs(root, 1)
-        return self.result
+        return self.dfs(root, 1)
+        
 
 #         if not root:
 #             return 0
