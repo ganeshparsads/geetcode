@@ -1,16 +1,18 @@
-class Solution:
-    def uniquePaths(self, m: int, n: int) -> int:
-        # [[False for x in range(mean + 1)] for x in range(size + 1)]
-        dp = [[0 for x in range(n)] for x in range(m)]
-
-        for i in range(m):
-            for j in range(n):
-
-                # initialization:
-                if i == 0 or j == 0:
-                    dp[i][j] = 1
-                # optimal decision
-                else:
-                    dp[i][j] = dp[i-1][j] + dp[i][j-1]
-
-        return dp[m-1][n-1]
+class Solution(object):
+    def uniquePaths(self, m, n):
+        """
+        :type m: int
+        :type n: int
+        :rtype: int
+        """
+        dp = [[0 for i in range(n+1)] for j in range(m+1)]
+        
+        dp[m-1][n-1] = 1
+        
+        for i in range(m-1, -1, -1):
+            for j in range(n-1, -1, -1):
+                if i == m-1 and j == n-1:
+                    continue
+                dp[i][j] = dp[i+1][j] + dp[i][j+1]
+        
+        return dp[0][0]
