@@ -1,5 +1,3 @@
-# Build a class, that stores word, it's frequency.
-# Overwrite compare functions, to prioritize words on frequency, alphabetical order.
 class Word_Rank:
 	def __init__(self, word, frequency):
 		self.word = word # string
