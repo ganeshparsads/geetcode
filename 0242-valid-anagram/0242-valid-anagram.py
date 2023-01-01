@@ -2,19 +2,19 @@ from collections import Counter
 
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        # n logn
-        # return sorted(list(s)) == sorted(list(t))
+        s1 = [0 for i in range(26)]
+        s2 = [0 for i in range(26)]
+        
+        for i in list(s):
+            asci = ord(i) - 97
+            s1[asci] += 1
 
-        s1 = Counter(s)
-        s2 = Counter(t)
+        for i in list(t):
+            asci = ord(i) - 97
+            s2[asci] += 1
         
-        if len(s1) != len(s2):
-            return False
-        
-        for key, val in s1.items():
-            if key in s2 and s1[key] == s2[key]:
-                continue
-            else:
+        for i in range(26):
+            if s1[i] != s2[i]:
                 return False
-        
+
         return True
