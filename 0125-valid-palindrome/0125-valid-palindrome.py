@@ -7,7 +7,7 @@ class Solution:
         j = len(s) - 1
         
         for i in range(len(s)//2):
-            if i != j and s[i].lower() != s[j].lower():
+            if i != j and s[i] != s[j]:
                 return False
             
             i += 1
