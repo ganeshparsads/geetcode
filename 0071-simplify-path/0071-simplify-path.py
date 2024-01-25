@@ -1,11 +1,18 @@
 class Solution:
     def simplifyPath(self, path: str) -> str:
-        folders = [folder for folder in path.split('/') if folder] 
+        folders = []
+        
         stack = []
-        for folder in folders:    
-            if folder == ".." and stack:
-                # remove the current folder
+        
+        for fold in path.split('/'):
+            if fold:
+                folders.append(fold)
+        
+        for fold in folders:
+            if fold not in ['.', '..']:
+                stack.append(fold)
+            elif fold == ".." and stack:
                 stack.pop()
-            if folder not in ['.','..']:
-                stack.append(folder)
+        
         return '/' + '/'.join(stack)
+                
