@@ -15,10 +15,10 @@ class Solution:
             return
         
         # logic
-        # not choose
-        self.helper(candidates, index+1, target, path)
 
         # choose
         path.append(candidates[index])
         self.helper(candidates, index, target - candidates[index], list(path))
         path.pop()
+        # not choose
+        self.helper(candidates, index+1, target, path)        
