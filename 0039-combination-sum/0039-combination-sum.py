@@ -1,29 +1,24 @@
-from copy import deepcopy
-
 class Solution:
     def __init__(self):
         self.result = []
     
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        self.backTrack(candidates, target, 0, [])
-        
+        self.helper(candidates, 0, target, [])
         return self.result
-
-    def backTrack(self, candidates, target, idx, path):
-        
+    
+    def helper(self, candidates, index, target, path):
         # base
-        if target < 0 or idx == len(candidates):
+        if index == len(candidates) or target < 0:
             return
-        
         if target == 0:
             self.result.append(path)
             return
-
-        #logic
         
+        # logic
         # not choose
-        self.backTrack(candidates, target, idx+1, list(path))
-        
+        self.helper(candidates, index+1, target, path)
+
         # choose
-        path.append(candidates[idx])
-        self.backTrack(candidates, target-candidates[idx], idx, list(path))
+        path.append(candidates[index])
+        self.helper(candidates, index, target - candidates[index], list(path))
+        path.pop()
