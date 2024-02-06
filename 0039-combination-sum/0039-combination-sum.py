@@ -16,9 +16,10 @@ class Solution:
         
         # logic
         for i in range(pivot, len(candidates)):
-            path.append(candidates[i])
-            self.forLoopHelper(candidates, i, target-candidates[i], list(path))
-            path.pop()
+            new_path = list(path)
+            new_path.append(candidates[i])
+            self.forLoopHelper(candidates, i, target-candidates[i], new_path)
+            # path.pop()
 
     def helper(self, candidates, index, target, path):
         # base
