@@ -3,8 +3,18 @@ class Solution:
         self.result = []
     
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        self.backTrack(nums, 0, [])
+        self.forLoop(nums, 0, [])
         return self.result
+    
+    def forLoop(self, nums, pivot, path):
+        self.result.append(path)        
+        if pivot == len(nums):
+            return
+        
+        for i in range(pivot, len(nums)):
+            path.append(nums[i])
+            self.forLoop(nums, i+1, list(path))
+            path.pop()
     
     def backTrack(self, nums, index, path):
         # base
@@ -19,5 +29,5 @@ class Solution:
         path.append(nums[index])
         # choose
         self.backTrack(nums, index+1, list(path))
-        
+
         path.pop()
