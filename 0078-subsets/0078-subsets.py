@@ -3,7 +3,15 @@ class Solution:
         self.result = []
     
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        self.forLoop(nums, 0, [])
+        # self.forLoop(nums, 0, [])
+        self.result.append([])
+        for i in nums:
+            for j in range(len(self.result)):
+                temp = list(self.result[j])
+                temp.append(i)
+                self.result.append(temp)
+        
+        
         return self.result
     
     def forLoop(self, nums, pivot, path):
