@@ -7,10 +7,8 @@ class Solution:
         return self.result
     
     def forLoop(self, nums, pivot, path):
-        self.result.append(path)        
-        if pivot == len(nums):
-            return
-        
+        self.result.append(path)
+
         for i in range(pivot, len(nums)):
             path.append(nums[i])
             self.forLoop(nums, i+1, list(path))
