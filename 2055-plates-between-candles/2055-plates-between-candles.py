@@ -9,7 +9,7 @@ class Solution:
                 prefix[i] = prefix[i-1]
 
         left_candle = [-1 for i in range(len(s))]
-        left_candle[0] = 0 if s[0] == "|" else -1
+        # left_candle[0] = 0 if s[0] == "|" else -1
         for i in range(len(s)):
             if s[i] == "|":
                 left_candle[i] = i
