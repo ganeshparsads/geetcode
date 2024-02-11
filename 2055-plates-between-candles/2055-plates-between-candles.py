@@ -9,7 +9,6 @@ class Solution:
                 prefix[i] = prefix[i-1]
 
         left_candle = [-1 for i in range(len(s))]
-        # left_candle[0] = 0 if s[0] == "|" else -1
         for i in range(len(s)):
             if s[i] == "|":
                 left_candle[i] = i
@@ -17,12 +16,11 @@ class Solution:
                 left_candle[i] = left_candle[i-1]
                 
         right_candle = [-1 for i in range(len(s))]
-        right_candle[-1] = len(s)-1 if s[-1] == "|" else -1
-        for i in range(len(s)-2, -1, -1):
+        rightMost = -1
+        for i in range(len(s)-1, -1, -1):
             if s[i] == "|":
-                right_candle[i] = i
-            else:
-                right_candle[i] = right_candle[i+1]
+                rightMost = i
+            right_candle[i] = rightMost
                 
         res = [0 for i in range(len(queries))]   
   
