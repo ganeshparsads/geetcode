@@ -1,12 +1,13 @@
 class Solution:
     def platesBetweenCandles(self, s: str, queries: List[List[int]]) -> List[int]:
-        prefix = [0 for i in range(len(s))]
-        prefix[0] = 1 if s[0] == "*" else 0
-        for i in range(1, len(s)):
+        prefix = []
+        prefix_sum = 0
+
+        for i in range(len(s)):
             if s[i] == "*":
-                prefix[i] = 1 + prefix[i-1]
-            else:
-                prefix[i] = prefix[i-1]
+                prefix_sum += 1
+            
+            prefix.append(prefix_sum)
 
         left_candle = [-1 for i in range(len(s))]
         for i in range(len(s)):
