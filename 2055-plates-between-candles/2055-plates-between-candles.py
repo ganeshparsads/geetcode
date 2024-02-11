@@ -28,12 +28,11 @@ class Solution:
         for i, j in queries:
             start = right_candle[i]
             end  = left_candle[j]
-            print(start, end)
             if start >= end:
                 res[ct] = 0
             else:
                 val = prefix[end] - prefix[start]
-                if val > 0:
+                if val > 0 and True:
                     res[ct] = val
                 else:
                     res[ct] = 0
