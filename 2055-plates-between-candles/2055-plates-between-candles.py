@@ -22,20 +22,15 @@ class Solution:
                 rightMost = i
             right_candle[i] = rightMost
                 
-        res = [0 for i in range(len(queries))]   
-  
-        ct = 0
+        res = []
+
         for i, j in queries:
             start = right_candle[i]
             end  = left_candle[j]
-            if start >= end:
-                res[ct] = 0
+            if i == j or start >= end:
+                res.append(0)
             else:
                 val = prefix[end] - prefix[start]
-                if val > 0 and True:
-                    res[ct] = val
-                else:
-                    res[ct] = 0
-            ct += 1
+                res.append(val)
 
         return res
