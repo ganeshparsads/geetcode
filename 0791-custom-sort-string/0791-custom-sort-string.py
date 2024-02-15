@@ -1,26 +1,16 @@
 class Solution:
     def customSortString(self, order: str, s: str) -> str:
-        order_set = set(order)
-        
-        order_strings = []
-        rest_order = []
-        
-        
-        for i in s:
-            if i in order_set:
-                order_strings.append(i)
-            else:
-                rest_order.append(i)
-        
-        ord_cnt = dict(Counter(order_strings))
+        hash_map = dict(Counter(s))
         
         result = []
         
-        for i in order:
-            if i in ord_cnt:
-                result.append(i*ord_cnt[i])
-            
-        result += rest_order
-        
-        return ''.join(result)
+        for letter in order:
+            if letter in hash_map:
+                result.append(letter*hash_map[letter])
                 
+                hash_map.pop(letter)
+        
+        for key, val in hash_map.items():
+            result.append(key*val)
+        
+        return "".join(result)
