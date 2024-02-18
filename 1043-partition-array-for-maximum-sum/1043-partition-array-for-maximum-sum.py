@@ -1,13 +1,21 @@
 class Solution:
     def maxSumAfterPartitioning(self, arr: List[int], k: int) -> int:
         n = len(arr)
-        dp = {n : 0}
-
-        for i in range(n-1, -1, -1):
-            maxNum, dp[i], j, limit = float('-inf'), float('-inf'), i, i + k
-            while j < n and j < limit:
-                maxNum = max(maxNum, arr[j])
-                dp[i] = max(dp[i], ((j-i+1) * maxNum) + dp[j+1])
+        dp = [0 for i in range(n)]
+        dp[0] = arr[0]
+        
+        for i in range(1, n):
+            max_ele = arr[i]
+            
+            j = 1
+            while j <= k and i-j+1 >= 0:
+                max_ele = max(max_ele, arr[i-j+1])
+                
+                if i-j >= 0:
+                    dp[i] = max(dp[i], max_ele * j + dp[i-j])
+                else:
+                    dp[i] = max(dp[i], max_ele*j)
+                
                 j += 1
         
-        return dp[0]        
+        return dp[n-1]
