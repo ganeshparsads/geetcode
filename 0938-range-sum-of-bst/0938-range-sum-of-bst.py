@@ -18,9 +18,9 @@ class Solution:
             if low <= curr.val <= high:
                 result.append(curr.val)
             
-            if low <= curr.val and curr.left:
+            if low < curr.val and curr.left:
                 bfs.append(curr.left)
-            if high >= curr.val and curr.right:
+            if high > curr.val and curr.right:
                 bfs.append(curr.right)
             
         
