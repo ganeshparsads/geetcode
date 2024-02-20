@@ -10,8 +10,8 @@ class Solution:
         return self.result        
 
     def backtrack(self, start, s):
-        if start == len(s):
-            return
+        # if start == len(s):
+        #     return
 
         for i in range(start, len(s)):
             if s[i].isalpha():
