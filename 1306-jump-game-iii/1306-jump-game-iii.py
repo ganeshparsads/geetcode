@@ -9,8 +9,8 @@ class Solution:
                 vis.add(temp)
                 if arr[temp]==0:
                     return True
-                if temp+arr[temp] in range(len(arr)) and temp+arr[temp] not in vis:
+                if temp+arr[temp] < len(arr) and temp+arr[temp] not in vis:
                     qu.append(temp+arr[temp])
-                if temp-arr[temp] in range(len(arr)) and temp-arr[temp] not in vis:
+                if temp-arr[temp] > -1 and temp-arr[temp] not in vis:
                     qu.append(temp-arr[temp])
         return False
