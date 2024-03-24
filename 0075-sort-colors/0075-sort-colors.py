@@ -6,9 +6,8 @@ class Solution:
         low = 0
         high = len(nums) - 1
         mid = 0
-        
+
         while mid <= high:
-            
             if nums[mid] == 0:
                 nums[mid], nums[low] = nums[low], nums[mid]
                 mid += 1
