@@ -1,19 +1,14 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        n = len(nums)
+        prev = nums[0]
+        max_so_far = prev
         
-        if n < 2:
-            return nums[0]        
-        
-        dp = [0] * n
-
-        dp[0] = nums[0]         
-        res = dp[0]
-        
-        for idx in range(1, n):
-            dp[idx] = max(nums[idx], nums[idx]+dp[idx-1])
+        for i in range(1, len(nums)):
+            if nums[i] + prev >= nums[i]:
+                prev = nums[i] + prev
+            else:
+                prev = nums[i]
             
-            res = max(res, dp[idx])
+            max_so_far = max(max_so_far, prev)
         
-        print(res)
-        return res        
+        return max(max_so_far, prev)
