@@ -30,8 +30,6 @@ class Solution:
             else:
                 nums[i] = 0
         
-        print(nums)
-            
         
         return self.find_sum(nums, k) - self.find_sum(nums, k-1)
         
