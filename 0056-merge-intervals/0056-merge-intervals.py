@@ -3,14 +3,15 @@ class Solution:
         stack = []
         intervals.sort(key=lambda x: x[0])
         
-        for i in intervals:
+        for each in intervals:
             if not stack:
-                stack.append(i)
+                stack.append(each)
+            elif stack[-1][1] < each[0]:
+                stack.append(each)
             else:
-                if stack[-1][1] >= i[0]:
-                    if i[1] > stack[-1][1]:
-                        stack[-1][1] = i[1]
+                if stack[-1][1] >= each[1]:
+                    continue
                 else:
-                    stack.append(i)
+                    stack[-1][1] = each[1]
         
         return stack
