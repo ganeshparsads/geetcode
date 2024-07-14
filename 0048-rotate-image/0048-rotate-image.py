@@ -4,11 +4,8 @@ class Solution:
         Do not return anything, modify matrix in-place instead.
         """
         matrix.reverse()
-
         n = len(matrix)
-        cnt = 0
-        
+
         for i in range(n):
             for j in range(i, n):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
-            cnt += 1
